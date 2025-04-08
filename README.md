@@ -1,2 +1,3 @@
-# learning-java
-Personal repo for learning Java
+# Learning Java
+
+Personal repo for learning Java.
