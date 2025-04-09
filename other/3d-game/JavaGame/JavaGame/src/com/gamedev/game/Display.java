@@ -1,5 +1,11 @@
+package com.gamedev.game;
+
+import java.awt.image.BufferedImage;
 import java.awt.Canvas;
 import javax.swing.JFrame;
+
+import com.gamedev.game.graphics.Render;
+import com.gamedev.game.graphics.Screen;
 
 public class Display extends Canvas implements Runnable{
     public static final int WIDTH = 800;
@@ -7,7 +13,17 @@ public class Display extends Canvas implements Runnable{
     public static final String TITLE = "Game Pre-Alpha";
 
     private Thread thread;
+    private Screen screen;
+    private BufferedImage img;
     private boolean running = false;
+    private Render render;
+    private int[] pixels;
+
+    public Display() {
+        screen = new Screen(WIDTH, HEIGHT);
+        img = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+        // 14:00 Episode 4
+    }
 
     /**
      * Starts the game loop and the thread if not already running.
@@ -35,10 +51,22 @@ public class Display extends Canvas implements Runnable{
         }
     }
 
+    /**
+     * Game loop
+     */
     public void run() {
         while (running) {
-
+            tick();
+            render();
         }
+    }
+
+    private void tick() {
+
+    }
+
+    private void render() {
+
     }
 
     public static void main(String[] args) {
