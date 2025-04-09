@@ -1,13 +1,16 @@
 package com.gamedev.game;
 
 import java.awt.image.BufferedImage;
+import java.awt.image.BufferStrategy;
 import java.awt.Canvas;
+import java.awt.image.DataBufferInt;
+import java.awt.Graphics;
 import javax.swing.JFrame;
 
 import com.gamedev.game.graphics.Render;
 import com.gamedev.game.graphics.Screen;
 
-public class Display extends Canvas implements Runnable{
+public class Display extends Canvas implements Runnable {
     public static final int WIDTH = 800;
     public static final int HEIGHT = 600;
     public static final String TITLE = "Game Pre-Alpha";
@@ -22,7 +25,7 @@ public class Display extends Canvas implements Runnable{
     public Display() {
         screen = new Screen(WIDTH, HEIGHT);
         img = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
-        // 14:00 Episode 4
+        pixels = ((DataBufferInt) img.getRaster().getDataBuffer()).getData();
     }
 
     /**
@@ -37,7 +40,8 @@ public class Display extends Canvas implements Runnable{
     }
 
     /**
-     * Stops the game loop and thread if running (for use when turning game into an applet later).
+     * Stops the game loop and thread if running (for use when turning game into an
+     * applet later).
      */
     private void stop() {
         if (!running)
@@ -66,7 +70,22 @@ public class Display extends Canvas implements Runnable{
     }
 
     private void render() {
+        BufferStrategy bs = this.getBufferStrategy();
+        if (bs == null) {
+            createBufferStrategy(3);
+            return;
+        }
 
+        screen.render();
+
+        for (int i = 0; i < WIDTH * HEIGHT; i++) {
+            pixels[i] = screen.pixels[i];
+        }
+
+        Graphics g = bs.getDrawGraphics();
+        g.drawImage(img, 0, 0, WIDTH, HEIGHT, null);
+        g.dispose();
+        bs.show();
     }
 
     public static void main(String[] args) {
