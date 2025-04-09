@@ -23,9 +23,23 @@ public class ChapterSix {
     public static double circleArea(double xc, double yc, double xp, double yp) {
         return calculateArea(distance(xc, yc, xp, yp));
     }
+
+    /**
+     * Checks if x is a single digit integer.
+     * @param x the integer to check
+     * @return true if x has one digit, false otherwise
+     */
+    public static boolean isSingleDigit(int x) {
+        if (x > - 10 && x < 10) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     public static void main(String[] args) {
         // returnValues();
         // System.out.println(distance(4, 3, 6, 9));
         System.out.println(circleArea(5, 2, 8, 3));
+        System.out.println(isSingleDigit(9));
     }
 }
