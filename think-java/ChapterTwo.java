@@ -1,13 +1,13 @@
 public class ChapterTwo {
     public static void main(String[] args) {
-        // Variables must be declared in Java
+        // VARIABLES IN JAVA
         String message = "The current time is ";
         int hour = 11;
         int minute = 59;
 
         System.out.println(message + hour + ":" + minute + ".");
 
-        // Reassigning variables
+        // REASSIGNING VARIABLES
         int a = 5;
         int b = a;
         a = 3;
@@ -19,7 +19,7 @@ public class ChapterTwo {
 
         System.out.println(pi);
 
-        // Rounding errors
+        // ROUNDING ERRORS
         // This prints normally
         System.out.println(0.1 * 10);
         // This has a rounding error due to the fact that

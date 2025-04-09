@@ -2,12 +2,12 @@ import java.util.Scanner;
 
 public class ChapterThree {
     public static void main(String[] args) {
-        // The System class
+        // THE SYSTEM CLASS
         System.out.println(System.out);
         // The output indicates that System.out is a
         // PrintStream, defined in java.io
 
-        // The Scanner class
+        // THE SCANNER CLASS
         // String line;
 
         // Before using Scanner, it must be imported,
@@ -25,7 +25,7 @@ public class ChapterThree {
         //     System.out.println("You also said: " + line);
         // }
 
-        // Inches to centimeters
+        // INCHES TO CENTIMETERS
         int inch;
         double cm;
         try (
@@ -47,13 +47,13 @@ public class ChapterThree {
             System.out.printf("%d in = %f cm\n", inch, cm);
         }
 
-        // Formatting output
+        // FORMATTING OUTPUT
         System.out.printf("Four thirds = %.3f", 4.0 / 3.0);
         // %.3f indicates that the value should be
         // displayed as a floating-point rounded to
         // three decimal places
 
-        // List of more
+        // LIST OF FORMATS
         // %d   - decimal integer
         // %08d - padded with zeros, at least 8 digits wide
         // %f   - floating-point
